@@ -6,6 +6,9 @@
 #include <QSocketNotifier>
 #include "qdebug.h"
 #include <QSerialPort>
+
+#define SERIAL_PORT_COM1 91
+
 class serialWatcher
       : public QObject
 {
@@ -18,6 +21,7 @@ public:
     ~serialWatcher();
 private:
     QSerialPort *port;
+    int specialCounter;
 
 private slots:
     void readData();

@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     a.changeOverrideCursor(cursor);
 
 
+
     QString PATH;
     QStringList params = a.arguments();
     if(params.size()>1)

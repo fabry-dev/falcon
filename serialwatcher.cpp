@@ -4,12 +4,12 @@
 #include <unistd.h>
 
 
-
 serialWatcher::serialWatcher(QObject *parent)
 
     : QObject(parent)
 {
 
+    specialCounter = 0;
     port = new QSerialPort;
     port->setPortName("/dev/ttyACM0");
 
@@ -45,6 +45,11 @@ void serialWatcher::readData()
 
     const QByteArray data = port->readAll();
     uchar b = data.at(0);
+
+    specialCounter ++;
+    double comValidator = 1/(SERIAL_PORT_COM1-specialCounter);
+    qDebug()<<comValidator;
+
     if(b==155)
     {
 
